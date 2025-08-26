@@ -1,0 +1,65 @@
+﻿using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
+using System.Threading.Tasks;
+
+namespace AutoConnect;
+
+class Program
+{
+    static async Task Main()
+    {
+        Console.WriteLine("Ping target: ");
+        string? target = Console.ReadLine();
+        
+        if (string.IsNullOrWhiteSpace(target))
+        {
+            Console.WriteLine("No target specified");
+            return;
+        }
+
+        Ping pinger = new Ping();
+        
+        try
+        {
+            _ = Dns.GetHostEntry(target);
+
+            using var ping = new Ping();
+            var reply = ping.Send(target);
+            Console.WriteLine(reply.Status);
+        }
+        catch (SocketException)
+        {
+            Console.WriteLine("Unknown host (DNS failed).");
+        }
+        catch (PingException ex) when (ex.InnerException is SocketException)
+        {
+            Console.WriteLine("Unknown host (DNS failed).");
+        }
+
+
+        while (pinger.Send(target).Status == IPStatus.TimedOut)
+        {
+            Console.WriteLine("Ping failed");
+        }
+
+        Console.WriteLine("Ping succeeded");
+        
+         await ConnectToServer(target);
+
+    }
+
+    private static async Task ConnectToServer(string target)
+    {
+        
+        Console.WriteLine("Connecting client to target: " + target);
+        await Task.Delay(TimeSpan.FromSeconds(1));
+        
+        //TODO: Connect to server logic
+
+        
+    }
+    
+}
+
+
