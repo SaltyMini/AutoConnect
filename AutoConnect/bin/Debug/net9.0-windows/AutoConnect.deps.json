@@ -1,0 +1,88 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "AutoConnect/1.0.0": {
+        "dependencies": {
+          "Facepunch.Steamworks": "2.3.3",
+          "Facepunch.Steamworks.Dll": "1.62.0"
+        },
+        "runtime": {
+          "AutoConnect.dll": {}
+        }
+      },
+      "Facepunch.Steamworks/2.3.3": {
+        "runtime": {
+          "lib/netstandard2.0/Facepunch.Steamworks.Win64.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Facepunch.Steamworks.Dll/1.62.0": {
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libsteam_api.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x86/native/libsteam_api.so": {
+            "rid": "linux-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx/native/libsteam_api.dylib": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/steam_api64.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "9.60.44.10"
+          },
+          "runtimes/win-x64/native/steam_api64.lib": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/steam_api.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "9.60.44.10"
+          },
+          "runtimes/win-x86/native/steam_api.lib": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AutoConnect/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Facepunch.Steamworks/2.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7nUjWX/uy6JbDX7Q3n8ij7vrpWjTM0S8hXO24R3ZwQ0QgY0sXVlxzh3unmYoLvKGi31rzDHqGX68I169hnHNxQ==",
+      "path": "facepunch.steamworks/2.3.3",
+      "hashPath": "facepunch.steamworks.2.3.3.nupkg.sha512"
+    },
+    "Facepunch.Steamworks.Dll/1.62.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cZPBPLI8BLlGatEUH+jkNGuKadAZ+SH81MUdyc+Ss05Eq05Tlx984eo9A3bnBksc/5tNF6v8yRYBkXGmAy393w==",
+      "path": "facepunch.steamworks.dll/1.62.0",
+      "hashPath": "facepunch.steamworks.dll.1.62.0.nupkg.sha512"
+    }
+  }
+}
