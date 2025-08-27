@@ -51,13 +51,12 @@ class Program
         }
         else
         {
-            Console.WriteLine($"Invalid module: {module}");
             Console.WriteLine("Available modules:");
             foreach (var availableModule in Enum.GetValues<ModulesList>())
             {
                 Console.WriteLine($"  - {availableModule}");
             }
-            return;
+            SelectModule();
         }
 
         
