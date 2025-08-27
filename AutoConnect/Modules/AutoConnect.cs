@@ -46,8 +46,8 @@ public class AutoConnect
         }
 
         Console.WriteLine("Ping succeeded");
-        
-        await instance.ConnectToServer(target);
+
+        await ConnectToServer(target);
     }
     
     
