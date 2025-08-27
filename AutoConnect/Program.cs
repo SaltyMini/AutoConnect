@@ -1,37 +1,28 @@
 ﻿using System;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
-using System.Threading.Tasks;
+using AutoConnect.Modules.SprayControlModule;
 
 namespace AutoConnect;
 
-class Program
+internal class Program
 {
-    private string rustFilePath = "";
-
-    private static Program instance;
-    private static Bootstrap bootstrap;
+    private static Bootstrap _bootstrap;
     
+    [STAThread]
     public static int Main()
     {
-        
-        //Initialize
-        
-        instance = new Program();
-        bootstrap = new Bootstrap();
+        _bootstrap = new Bootstrap();
 
-        bootstrap.init();
+        _bootstrap.Init();
         
         SelectModule();
         
         return 1;
     }
 
-    public static void SelectModule()
+    private static void SelectModule()
     {
         Console.Write("Select module or -m for modules: ");
-        string? module = Console.ReadLine();
+        var module = Console.ReadLine();
 
         if (string.IsNullOrWhiteSpace(module))
         {
@@ -39,13 +30,18 @@ class Program
             return;
         }
 
-        if (Enum.TryParse<ModulesList>(module, true, out ModulesList selectedModule))
+        if (Enum.TryParse(module, true, out ModulesList selectedModule))
         {
             Console.WriteLine($"Selected module: {selectedModule}");
             switch (selectedModule)
             {
                 case ModulesList.AutoConnect:
+                    ModuleRunMessage(selectedModule);
                     RunAutoConnect();
+                    break;
+                case ModulesList.SprayControl:
+                    ModuleRunMessage(selectedModule);   
+                    RunOverlayStart();
                     break;
             }
         }
@@ -62,13 +58,27 @@ class Program
         
     }
 
+    private static void ModuleRunMessage(ModulesList module)
+    {
+        Console.WriteLine($"Running module: {module}");
+    }
+
     private static void RunAutoConnect()
     {
         Modules.AutoConnectModule ac = new Modules.AutoConnectModule();
         ac.StartAutoConnect();
     }
-    
-    
+
+    private static void RunOverlayStart()
+    {
+        
+        Console.WriteLine("Starting overlay");
+        
+        SprayOverlay overlay = new SprayOverlay();
+        overlay.SpawnWindow();
+        
+        System.Windows.Threading.Dispatcher.Run();
+    }
 }
 
 

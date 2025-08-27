@@ -54,10 +54,10 @@ public partial class SprayOverlay : Window
 
     private void OnWindowLoaded(object sender, RoutedEventArgs e)
     {
-        MakeClickPassthrough();
+        MakeClickThrough();
     }
 
-    private void MakeClickPassthrough()
+    private void MakeClickThrough()
     {
         var hwnd = new WindowInteropHelper(this).Handle;
         var extendedStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
