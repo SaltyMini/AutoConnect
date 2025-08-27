@@ -1,11 +1,105 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "Facepunch.Steamworks/2.3.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Facepunch.Steamworks.Win64.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Facepunch.Steamworks.Win64.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Facepunch.Steamworks.Dll/1.62.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libsteam_api.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x86/native/libsteam_api.so": {
+            "assetType": "native",
+            "rid": "linux-x86"
+          },
+          "runtimes/osx/native/libsteam_api.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win-x64/native/steam_api64.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/steam_api64.lib": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/steam_api.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/steam_api.lib": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Facepunch.Steamworks/2.3.3": {
+      "sha512": "7nUjWX/uy6JbDX7Q3n8ij7vrpWjTM0S8hXO24R3ZwQ0QgY0sXVlxzh3unmYoLvKGi31rzDHqGX68I169hnHNxQ==",
+      "type": "package",
+      "path": "facepunch.steamworks/2.3.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Facepunch.Steamworks.jpg",
+        "content/steam_api64.dll",
+        "facepunch.steamworks.2.3.3.nupkg.sha512",
+        "facepunch.steamworks.nuspec",
+        "lib/net46/Facepunch.Steamworks.Win64.dll",
+        "lib/net46/Facepunch.Steamworks.Win64.xml",
+        "lib/netstandard2.0/Facepunch.Steamworks.Win64.dll",
+        "lib/netstandard2.0/Facepunch.Steamworks.Win64.xml"
+      ]
+    },
+    "Facepunch.Steamworks.Dll/1.62.0": {
+      "sha512": "cZPBPLI8BLlGatEUH+jkNGuKadAZ+SH81MUdyc+Ss05Eq05Tlx984eo9A3bnBksc/5tNF6v8yRYBkXGmAy393w==",
+      "type": "package",
+      "path": "facepunch.steamworks.dll/1.62.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "facepunch.steamworks.dll.1.62.0.nupkg.sha512",
+        "facepunch.steamworks.dll.nuspec",
+        "lib/netstandard2.0/_._",
+        "runtimes/linux-x64/native/libsteam_api.so",
+        "runtimes/linux-x86/native/libsteam_api.so",
+        "runtimes/osx/native/libsteam_api.dylib",
+        "runtimes/win-x64/native/steam_api64.dll",
+        "runtimes/win-x64/native/steam_api64.lib",
+        "runtimes/win-x86/native/steam_api.dll",
+        "runtimes/win-x86/native/steam_api.lib"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "Facepunch.Steamworks >= 2.3.3",
+      "Facepunch.Steamworks.Dll >= 1.62.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\samcl\\.nuget\\packages\\": {},
@@ -56,6 +150,16 @@
     "frameworks": {
       "net9.0": {
         "targetAlias": "net9.0",
+        "dependencies": {
+          "Facepunch.Steamworks": {
+            "target": "Package",
+            "version": "[2.3.3, )"
+          },
+          "Facepunch.Steamworks.Dll": {
+            "target": "Package",
+            "version": "[1.62.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

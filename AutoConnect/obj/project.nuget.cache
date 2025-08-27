@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "oralO1iSAF4=",
+  "dgSpecHash": "XE4cKEA1iRU=",
   "success": true,
   "projectFilePath": "C:\\Users\\samcl\\RiderProjects\\AutoConnect\\AutoConnect\\AutoConnect.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\samcl\\.nuget\\packages\\facepunch.steamworks\\2.3.3\\facepunch.steamworks.2.3.3.nupkg.sha512",
+    "C:\\Users\\samcl\\.nuget\\packages\\facepunch.steamworks.dll\\1.62.0\\facepunch.steamworks.dll.1.62.0.nupkg.sha512"
+  ],
   "logs": []
 }
