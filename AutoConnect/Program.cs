@@ -64,7 +64,7 @@ class Program
 
     private static void RunAutoConnect()
     {
-        Modules.AutoConnect ac = new Modules.AutoConnect();
+        Modules.AutoConnectModule ac = new Modules.AutoConnectModule();
         ac.StartAutoConnect();
     }
     

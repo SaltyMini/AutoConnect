@@ -10,7 +10,7 @@ public class Bootstrap
     {
             try
             {
-                SteamClient.Init( 252490, true );
+                SteamClient.Init( 480, true );
                 return true;
             }
             catch ( Exception e )

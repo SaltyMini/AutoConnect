@@ -3,10 +3,11 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using Steamworks;
 
 namespace AutoConnect.Modules;
 
-public class AutoConnect
+public class AutoConnectModule
 {
 
     public async void StartAutoConnect()
@@ -51,23 +52,52 @@ public class AutoConnect
     }
     
     
-    public bool IsGameRunning()
+    public bool IsRustRunning()
     {
+        try
+        {
+            // Rust's App ID is 252490
+            var rustAppId = 252490;
+            
+            if (!SteamApps.IsAppInstalled(rustAppId))
+                return false;
+            
+            try
+            {
+                var processes = System.Diagnostics.Process.GetProcessesByName("RustClient");
+                return processes.Length > 0;
+            }
+            catch
+            {
+                return false;
+            }
+            
+        } catch (Exception e)
+        {
+            Console.WriteLine("Error checking if game is running");
+            Console.WriteLine(e);
+            return false;
+        }
 
-        
 
-        return false;
     }
 
     public async Task ConnectToServer(string target)
     {
-        
+
         Console.WriteLine("Connecting client to target: " + target);
         await Task.Delay(TimeSpan.FromSeconds(1));
-        
-        //TODO: Connect to server logic
 
-        
-    }
+        if (IsRustRunning())
+        {
+            
+        }
+        else
+        {
+            //launch rust, then focus, then connect
+        }
+
+
+}
     
 }
