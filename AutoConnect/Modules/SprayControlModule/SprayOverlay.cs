@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Media;
 using Color = System.Drawing.Color;
 
@@ -23,14 +24,13 @@ public partial class SprayOverlay : Window
         const uint WS_EX_LAYERED = 0x80000;
         const uint WS_EX_TRANSPARENT = 0x20;
 
-    
-    public SprayOverlay([NotNull] SprayTypes sprayType, Color? patternColour = null, Color? sprayColour = null)
+    public SprayOverlay(Color? patternColour = null, Color? sprayColour = null)
     {
-        
         _patternColour = patternColour ?? Color.FromArgb(255, 230, 200, 255);
         _sprayColour = sprayColour ?? Color.FromArgb(255, 255, 0, 0);
         
-        
+        InitializeComponent();
+        ConfigWindow();
     }
 
     private void ConfigWindow()
@@ -49,8 +49,23 @@ public partial class SprayOverlay : Window
         this.Left = SystemParameters.PrimaryScreenWidth - this.Width - 50;
         this.Top = 50;
 
-
+        this.Loaded += OnWindowLoaded;
     }
-    
-    
+
+    private void OnWindowLoaded(object sender, RoutedEventArgs e)
+    {
+        MakeClickPassthrough();
+    }
+
+    private void MakeClickPassthrough()
+    {
+        var hwnd = new WindowInteropHelper(this).Handle;
+        var extendedStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
+        SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_TRANSPARENT);
+    }
+
+    public void SpawnWindow()
+    {
+        this.Show();
+    }
 }
